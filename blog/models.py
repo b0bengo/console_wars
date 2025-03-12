@@ -11,12 +11,16 @@ class Post(models.Model):
     created_on = models.DateTimeField(auto_now_add=True)
     content = models.TextField()
     status = models.IntegerField(choices=STATUS, default=0)
+    likes = models.ManyToManyField(User, related_name='blog_posts', blank=True)  # Add this line
 
     class Meta:
         ordering = ["-created_on"]
 
     def __str__(self):
         return f"{self.title} - {self.author}"
+
+    def total_likes(self):
+        return self.likes.count()  # Add this method to get the total number of likes
 
 
 class Comment(models.Model):

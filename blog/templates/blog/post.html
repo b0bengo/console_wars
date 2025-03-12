@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+<ul>
+    {% for post in posts %}
+        <li>
+            {{ post.title }} - {{ post.author }} - Likes: {{ post.total_likes }}
+            <form action="{% url 'like_post' post.id %}" method="post">
+                {% csrf_token %}
+                <button type="submit">Like</button>
+            </form>
+        </li>
+    {% endfor %}
+</ul>
+
+{% endblock %}
