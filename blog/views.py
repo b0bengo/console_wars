@@ -6,7 +6,8 @@ from .models import Post
 
 class PostList(ListView):
     model = Post
-    template_name = 'blog/indexpost.html'
+    template_name = 'blog/post.html'
+    paginate_by = 6
     context_object_name = 'posts'
 
 def like_post(request, post_id):
