@@ -2,15 +2,16 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.forms import UserCreationForm
 from django import forms
+from .models import UserOption
 
 # Create your views here.
 
 class RegistrationForm(UserCreationForm):
     OPTIONS = [
-        ('option1', 'Option 1'),
-        ('option2', 'Option 2'),
-        ('option3', 'Option 3'),
-        ('option4', 'Option 4'),
+        ('nintendo_switch', 'Nintendo Switch'),
+        ('xbox', 'Xbox'),
+        ('pc', 'PC'),
+        ('playstation', 'Playstation'),
     ]
     dropdown = forms.ChoiceField(choices=OPTIONS)
 
@@ -18,7 +19,9 @@ def register(request):
     if request.method == 'POST':
         form = RegistrationForm(request.POST)
         if form.is_valid():
-            form.save()
+            user = form.save()
+            option = form.cleaned_data.get('dropdown')
+            UserOption.objects.create(user=user, option=option)
             return redirect('login')
     else:
         form = RegistrationForm()
