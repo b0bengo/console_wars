@@ -2,5 +2,45 @@
 
 {% block content %}
 <h1>Welcome to Home Page</h1>
-<img src="data:image/png;base64,{{ pie_chart }}" alt="Pie Chart">
+<p>Nintendo Switch: {{ option_counts.nintendo_switch }}</p>
+<p>Xbox: {{ option_counts.xbox }}</p>
+<p>PC: {{ option_counts.pc }}</p>
+<p>Playstation: {{ option_counts.playstation }}</p>
+
+<canvas id="myPieChart"></canvas>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    var ctx = document.getElementById('myPieChart').getContext('2d');
+    var myPieChart = new Chart(ctx, {
+        type: 'pie',
+        data: {
+            labels: ['Nintendo Switch', 'Xbox', 'PC', 'Playstation'],
+            datasets: [{
+                data: [
+                    {{ option_counts.nintendo_switch }},
+                    {{ option_counts.xbox }},
+                    {{ option_counts.pc }},
+                    {{ option_counts.playstation }}
+                ],
+                backgroundColor: ['#E60012', '#0e7a0d', '#1b2838', '#006fcd']
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: 'top',
+                },
+                tooltip: {
+                    callbacks: {
+                        label: function(tooltipItem) {
+                            return tooltipItem.label + ': ' + tooltipItem.raw;
+                        }
+                    }
+                }
+            }
+        }
+    });
+</script>
 {% endblock %}
