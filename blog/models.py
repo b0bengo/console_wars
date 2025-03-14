@@ -1,12 +1,13 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.utils.text import slugify
 
 STATUS = ((0, "Draft"), (1, "Published"))
 
 # Create your models here.
 class Post(models.Model):
     title = models.CharField(max_length=100)
-    slug = models.SlugField(max_length=200, unique=True, default="")
+    slug = models.SlugField(max_length=200, unique=True, blank=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     created_on = models.DateTimeField(auto_now_add=True)
     content = models.TextField()
@@ -21,6 +22,11 @@ class Post(models.Model):
 
     def total_likes(self):
         return self.likes.count()  # to get the total number of likes
+    
+    def save(self, *args, **kwargs):
+        if not self.slug:  # Generate slug only if it doesn't exist
+            self.slug = slugify(self.title)
+        super().save(*args, **kwargs)
 
 
 class Comment(models.Model):
