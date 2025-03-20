@@ -43,4 +43,40 @@
         }
     });
 </script>
+
+<h2>Most Liked Posts by Category</h2>
+<ul>
+    <li>
+        <strong>Nintendo Switch:</strong>
+        {% if most_liked_posts.nintendo_switch %}
+            {{ most_liked_posts.nintendo_switch.title }} - {{ most_liked_posts.nintendo_switch.total_likes }} likes
+        {% else %}
+            No posts available.
+        {% endif %}
+    </li>
+    <li>
+        <strong>Xbox:</strong>
+        {% if most_liked_posts.xbox %}
+            {{ most_liked_posts.xbox.title }} - {{ most_liked_posts.xbox.total_likes }} likes
+        {% else %}
+            No posts available.
+        {% endif %}
+    </li>
+    <li>
+        <strong>PC:</strong>
+        {% if most_liked_posts.pc %}
+            {{ most_liked_posts.pc.title }} - {{ most_liked_posts.pc.total_likes }} likes
+        {% else %}
+            No posts available.
+        {% endif %}
+    </li>
+    <li>
+        <strong>Playstation:</strong>
+        {% if most_liked_posts.playstation %}
+            {{ most_liked_posts.playstation.title }} - {{ most_liked_posts.playstation.total_likes }} likes
+        {% else %}
+            No posts available.
+        {% endif %}
+    </li>
+</ul>
 {% endblock %}

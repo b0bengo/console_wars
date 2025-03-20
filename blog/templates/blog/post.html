@@ -1,18 +1,21 @@
 {% extends "base.html" %}
 
 {% block content %}
-
 <h2>Posts</h2>
 
 <!-- Posts List -->
 <ul>
     {% for post in posts %}
         <li>
-            {{ post.title }} - {{ post.author }} - Likes: {{ post.total_likes }}
+            <a href="{% url 'post_detail' post.id %}">{{ post.title }}</a> - {{ post.author }} - Likes: {{ post.total_likes }}
             {% if user.is_authenticated %}
                 <form action="{% url 'like_post' post.id %}" method="post">
                     {% csrf_token %}
-                    <button type="submit">Like</button>
+                    {% if user in post.likes.all %}
+                        <button type="submit" class="btn btn-danger">Unlike</button>
+                    {% else %}
+                        <button type="submit" class="btn btn-primary">Like</button>
+                    {% endif %}
                 </form>
             {% else %}
                 <p><a href="{% url 'login' %}">Log in</a> to like this post.</p>
@@ -39,6 +42,6 @@
             {% endif %}
         </ul>
     </nav>
-    {% endif %}
+{% endif %}
 
 {% endblock %}

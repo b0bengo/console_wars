@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>{{ post.title }}</h2>
+<p><strong>Author:</strong> {{ post.author }}</p>
+<p>{{ post.content }}</p>
+
+<h3>Comments</h3>
+<ul>
+    {% for comment in comments %}
+        <li>
+            <strong>{{ comment.author }}</strong>: {{ comment.body }}
+            {% if user == comment.author %}
+                <form action="{% url 'delete_comment' comment.id %}" method="post" style="display: inline;">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                </form>
+            {% endif %}
+        </li>
+    {% empty %}
+        <li>No comments yet.</li>
+    {% endfor %}
+</ul>
+
+{% if user.is_authenticated %}
+    <form action="{% url 'add_comment' post.id %}" method="post">
+        {% csrf_token %}
+        {{ comment_form.as_p }}
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+{% else %}
+    <p><a href="{% url 'login' %}">Log in</a> to add a comment.</p>
+{% endif %}
+
+<a href="{% url 'post_list' %}" class="btn btn-secondary">Back to Posts</a>
+{% endblock %}

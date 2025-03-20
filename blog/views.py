@@ -1,10 +1,11 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from django.views.generic import ListView, CreateView, UpdateView, DeleteView
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.decorators import login_required
+from django.views.decorators.http import require_POST
 from django.urls import reverse_lazy
-from .models import Post
-from .forms import PostForm
+from .models import Post, Comment
+from .forms import PostForm, CommentForm
 
 # Create your views here.
 
@@ -13,7 +14,6 @@ class PostList(ListView):
     template_name = 'blog/post.html'
     paginate_by = 6
     context_object_name = 'posts'
-
 
 class UserPostList(LoginRequiredMixin, ListView):
     model = Post
@@ -39,11 +39,31 @@ class PostCreateView(LoginRequiredMixin, CreateView):
 def like_post(request, post_id):
     post = get_object_or_404(Post, id=post_id)
     if post.likes.filter(id=request.user.id).exists():
-        post.likes.remove(request.user)
+        post.likes.remove(request.user)  # Unlike the post
     else:
-        post.likes.add(request.user)
+        post.likes.add(request.user)  # Like the post
     return redirect('post_list')  # Redirect to the posts list or any other appropriate page
 
+@login_required
+@require_POST
+def add_comment(request, post_id):
+    post = get_object_or_404(Post, id=post_id)
+    form = CommentForm(request.POST)
+    if form.is_valid():
+        comment = form.save(commit=False)
+        comment.post = post
+        comment.author = request.user
+        comment.save()
+    return redirect('post_detail', pk=post_id)
+
+@login_required
+def delete_comment(request, comment_id):
+    comment = get_object_or_404(Comment, id=comment_id)
+    if comment.author == request.user:  # Ensure the logged-in user is the author
+        comment.delete()
+        return redirect('post_detail', pk=comment.post.id)
+    else:
+        return redirect('post_detail', pk=comment.post.id)  # Redirect if unauthorized
 
 class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Post
@@ -68,3 +88,14 @@ class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     def test_func(self):
         post = self.get_object()
         return self.request.user == post.author
+
+class PostDetailView(DetailView):
+    model = Post
+    template_name = 'blog/post_detail.html'
+    context_object_name = 'post'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['comment_form'] = CommentForm()
+        context['comments'] = self.object.comments.all()  # Fetch all comments for the post
+        return context
