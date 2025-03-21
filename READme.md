@@ -1,7 +1,14 @@
 # CodeWars
 
 ## Overview
-[Briefly describe the purpose of the project, the problem it solves, and its value to users.]
+CodeWars is a community-driven platform designed to bring gaming enthusiasts together. The platform allows users to share their thoughts, engage in discussions, and express their preferences for different gaming platforms, such as Nintendo Switch, Xbox, PC, and PlayStation. 
+
+The project aims to:
+- Provide a space for users to create, view, and interact with posts about their favorite gaming platforms.
+- Enable users to like posts, comment on them, and engage in meaningful discussions.
+- Offer insights into user preferences through visual data representation, such as pie charts showing platform popularity.
+
+By fostering a collaborative and inclusive environment, CodeWars encourages users to connect over their shared passion for gaming while ensuring accessibility and usability for all.
 
 ## UX Design Process
 • Link to User Stories in GitHub Projects:  
