@@ -1,13 +1,89 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1>Welcome to Home Page</h1>
-<p>Nintendo Switch: {{ option_counts.nintendo_switch }}</p>
-<p>Xbox: {{ option_counts.xbox }}</p>
-<p>PC: {{ option_counts.pc }}</p>
-<p>Playstation: {{ option_counts.playstation }}</p>
+<div class="container">
+    <!-- Section 1: Welcome Header -->
+    <div class="row">
+        <div class="col-12 text-center my-4">
+            <h1>Welcome to Console Wars</h1>
+        </div>
+    </div>
 
-<canvas id="myPieChart"></canvas>
+    <!-- Section 2: Pie Chart -->
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-8 text-center my-4">
+            <div class="chart-container">
+                <canvas id="myPieChart"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <!-- Section 3: Most Liked Posts Header -->
+    <div class="row">
+        <div class="col-12 text-center my-4">
+            <h2>Most Liked Posts by Category</h2>
+        </div>
+    </div>
+
+    <!-- Sections 4-7: Categories -->
+    <div class="row">
+        <!-- Nintendo Switch -->
+        <div class="col-12 col-md-6 my-3">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Nintendo Switch</h4>
+                    {% if most_liked_posts.nintendo_switch %}
+                        <p class="card-text">{{ most_liked_posts.nintendo_switch.title }} - {{ most_liked_posts.nintendo_switch.total_likes }} likes</p>
+                    {% else %}
+                        <p class="card-text">No posts available.</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+        <!-- Xbox -->
+        <div class="col-12 col-md-6 my-3">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Xbox</h4>
+                    {% if most_liked_posts.xbox %}
+                        <p class="card-text">{{ most_liked_posts.xbox.title }} - {{ most_liked_posts.xbox.total_likes }} likes</p>
+                    {% else %}
+                        <p class="card-text">No posts available.</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+        <!-- PC -->
+        <div class="col-12 col-md-6 my-3">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">PC</h4>
+                    {% if most_liked_posts.pc %}
+                        <p class="card-text">{{ most_liked_posts.pc.title }} - {{ most_liked_posts.pc.total_likes }} likes</p>
+                    {% else %}
+                        <p class="card-text">No posts available.</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+        <!-- Playstation -->
+        <div class="col-12 col-md-6 my-3">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Playstation</h4>
+                    {% if most_liked_posts.playstation %}
+                        <p class="card-text">{{ most_liked_posts.playstation.title }} - {{ most_liked_posts.playstation.total_likes }} likes</p>
+                    {% else %}
+                        <p class="card-text">No posts available.</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
@@ -28,6 +104,7 @@
         },
         options: {
             responsive: true,
+            maintainAspectRatio: false,  // Allow the chart to resize dynamically
             plugins: {
                 legend: {
                     position: 'top',
@@ -43,40 +120,4 @@
         }
     });
 </script>
-
-<h2>Most Liked Posts by Category</h2>
-<ul>
-    <li>
-        <strong>Nintendo Switch:</strong>
-        {% if most_liked_posts.nintendo_switch %}
-            {{ most_liked_posts.nintendo_switch.title }} - {{ most_liked_posts.nintendo_switch.total_likes }} likes
-        {% else %}
-            No posts available.
-        {% endif %}
-    </li>
-    <li>
-        <strong>Xbox:</strong>
-        {% if most_liked_posts.xbox %}
-            {{ most_liked_posts.xbox.title }} - {{ most_liked_posts.xbox.total_likes }} likes
-        {% else %}
-            No posts available.
-        {% endif %}
-    </li>
-    <li>
-        <strong>PC:</strong>
-        {% if most_liked_posts.pc %}
-            {{ most_liked_posts.pc.title }} - {{ most_liked_posts.pc.total_likes }} likes
-        {% else %}
-            No posts available.
-        {% endif %}
-    </li>
-    <li>
-        <strong>Playstation:</strong>
-        {% if most_liked_posts.playstation %}
-            {{ most_liked_posts.playstation.title }} - {{ most_liked_posts.playstation.total_likes }} likes
-        {% else %}
-            No posts available.
-        {% endif %}
-    </li>
-</ul>
 {% endblock %}
