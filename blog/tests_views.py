@@ -6,6 +6,7 @@ from blog.models import Post, Comment
 # Create your tests here.
 
 # Post List View Test
+
 class TestPostListView(TestCase):
     def setUp(self):
         self.client = Client()
