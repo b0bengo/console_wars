@@ -7,6 +7,70 @@ html, body {
     background-color: #f8f9fa; /* Optional: Add a background color for the main content */
 }
 
+/* Override Bootstrap's card background for each console */
+
+/* Nintendo Switch */
+.card.nintendo-switch {
+    background-color: #E60012 !important; /* Nintendo Switch Red */
+    color: white; /* White text */
+}
+
+.card.nintendo-switch a {
+    color: white; /* White text for links */
+    text-decoration: none; /* Remove underline */
+}
+
+.card.nintendo-switch a:hover {
+    text-decoration: underline; /* Underline on hover */
+}
+
+/* Xbox */
+.card.xbox {
+    background-color: #107C10 !important; /* Xbox Green */
+    color: white; /* White text */
+}
+
+.card.xbox a {
+    color: white; /* White text for links */
+    text-decoration: none; /* Remove underline */
+}
+
+.card.xbox a:hover {
+    text-decoration: underline; /* Underline on hover */
+}
+
+/* PC */
+.card.pc {
+    background-color: #1B2838 !important; /* PC Blue */
+    color: white; /* White text */
+}
+
+.card.pc a {
+    color: white; /* White text for links */
+    text-decoration: none; /* Remove underline */
+}
+
+.card.pc a:hover {
+    text-decoration: underline; /* Underline on hover */
+}
+
+
+/* Playstation */
+.card.playstation {
+    background-color: #003791 !important; /* Playstation Blue */
+    color: white; /* White text */
+}
+
+.card.playstation a {
+    color: white; /* White text for links */
+    text-decoration: none; /* Remove underline */
+}
+
+.card.playstation a:hover {
+    text-decoration: underline; /* Underline on hover */
+}
+
+
 .card {
     border-radius: 10px; /* Rounded corners for the card */
 }

@@ -2,16 +2,18 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.utils.text import slugify
 
-STATUS = ((0, "Draft"), (1, "Published"))
-
 # Create your models here.
 class Post(models.Model):
+    STATUS_CHOICES = [
+        ('draft', 'Draft'),
+        ('published', 'Published'),
+    ]
     title = models.CharField(max_length=100)
     slug = models.SlugField(max_length=200, unique=True, blank=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     created_on = models.DateTimeField(auto_now_add=True)
     content = models.TextField()
-    status = models.IntegerField(choices=STATUS, default=0)
+    status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='draft')
     likes = models.ManyToManyField(User, related_name='blog_posts', blank=True)  
 
     class Meta:

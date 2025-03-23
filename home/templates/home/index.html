@@ -1,5 +1,7 @@
 {% extends "base.html" %}
 
+{% load static %}
+
 {% block content %}
 <div class="container">
     <!-- Section 1: Welcome Header -->
@@ -29,11 +31,15 @@
     <div class="row">
         <!-- Nintendo Switch -->
         <div class="col-12 col-md-6 my-3">
-            <div class="card">
+            <div class="card nintendo-switch">
                 <div class="card-body">
                     <h4 class="card-title">Nintendo Switch</h4>
                     {% if most_liked_posts.nintendo_switch %}
-                        <p class="card-text">{{ most_liked_posts.nintendo_switch.title }} - {{ most_liked_posts.nintendo_switch.total_likes }} likes</p>
+                        <p class="card-text">
+                            <a href="{% url 'post_detail' most_liked_posts.nintendo_switch.id %}">
+                                {{ most_liked_posts.nintendo_switch.title }}
+                            </a> - {{ most_liked_posts.nintendo_switch.total_likes }} likes
+                        </p>
                     {% else %}
                         <p class="card-text">No posts available.</p>
                     {% endif %}
@@ -43,11 +49,15 @@
 
         <!-- Xbox -->
         <div class="col-12 col-md-6 my-3">
-            <div class="card">
+            <div class="card xbox">
                 <div class="card-body">
                     <h4 class="card-title">Xbox</h4>
                     {% if most_liked_posts.xbox %}
-                        <p class="card-text">{{ most_liked_posts.xbox.title }} - {{ most_liked_posts.xbox.total_likes }} likes</p>
+                        <p class="card-text">
+                            <a href="{% url 'post_detail' most_liked_posts.xbox.id %}">
+                                {{ most_liked_posts.xbox.title }}
+                            </a> - {{ most_liked_posts.xbox.total_likes }} likes
+                        </p>
                     {% else %}
                         <p class="card-text">No posts available.</p>
                     {% endif %}
@@ -57,11 +67,15 @@
 
         <!-- PC -->
         <div class="col-12 col-md-6 my-3">
-            <div class="card">
+            <div class="card pc">
                 <div class="card-body">
                     <h4 class="card-title">PC</h4>
                     {% if most_liked_posts.pc %}
-                        <p class="card-text">{{ most_liked_posts.pc.title }} - {{ most_liked_posts.pc.total_likes }} likes</p>
+                        <p class="card-text">
+                            <a href="{% url 'post_detail' most_liked_posts.pc.id %}">
+                                {{ most_liked_posts.pc.title }}
+                            </a> - {{ most_liked_posts.pc.total_likes }} likes
+                        </p>
                     {% else %}
                         <p class="card-text">No posts available.</p>
                     {% endif %}
@@ -71,11 +85,15 @@
 
         <!-- Playstation -->
         <div class="col-12 col-md-6 my-3">
-            <div class="card">
+            <div class="card playstation">
                 <div class="card-body">
                     <h4 class="card-title">Playstation</h4>
                     {% if most_liked_posts.playstation %}
-                        <p class="card-text">{{ most_liked_posts.playstation.title }} - {{ most_liked_posts.playstation.total_likes }} likes</p>
+                        <p class="card-text">
+                            <a href="{% url 'post_detail' most_liked_posts.playstation.id %}">
+                                {{ most_liked_posts.playstation.title }}
+                            </a> - {{ most_liked_posts.playstation.total_likes }} likes
+                        </p>
                     {% else %}
                         <p class="card-text">No posts available.</p>
                     {% endif %}
