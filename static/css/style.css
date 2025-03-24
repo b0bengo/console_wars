@@ -11,7 +11,7 @@ html, body {
 
 /* Nintendo Switch */
 .card.nintendo-switch {
-    background-color: #E60012 !important; /* Nintendo Switch Red */
+    background-color: #E60012; /* Nintendo Switch Red */
     color: white; /* White text */
 }
 
@@ -26,7 +26,7 @@ html, body {
 
 /* Xbox */
 .card.xbox {
-    background-color: #107C10 !important; /* Xbox Green */
+    background-color: #107C10; /* Xbox Green */
     color: white; /* White text */
 }
 
@@ -41,7 +41,7 @@ html, body {
 
 /* PC */
 .card.pc {
-    background-color: #1B2838 !important; /* PC Blue */
+    background-color: #1B2838; /* PC Blue */
     color: white; /* White text */
 }
 
@@ -57,7 +57,7 @@ html, body {
 
 /* Playstation */
 .card.playstation {
-    background-color: #003791 !important; /* Playstation Blue */
+    background-color: #003791; /* Playstation Blue */
     color: white; /* White text */
 }
 
@@ -128,4 +128,20 @@ canvas {
     padding: 10px; /* Add padding inside the container */
     background-color: #f8f9fa; /* Optional: Light background for the comments section */
     border-radius: 5px; /* Rounded corners */
+}
+
+/* Like and Unlike Button Styles */
+.like-btn, .unlike-btn {
+    background-color: transparent; /* Transparent background */
+    color: white; /* White text */
+    border: 2px solid white; /* White border */
+    padding: 10px 20px; /* Padding for the button */
+    border-radius: 5px; /* Rounded corners */
+    font-size: 16px; /* Font size */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s ease, text-decoration 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.like-btn:hover, .unlike-btn:hover {
+    text-decoration: underline; /* Underline text on hover */
 }

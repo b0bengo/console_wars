@@ -4,6 +4,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.http import require_POST
 from django.urls import reverse_lazy
+from django.db.models import Q
 from .models import Post, Comment
 from .forms import PostForm, CommentForm
 
@@ -14,6 +15,25 @@ class PostList(ListView):
     template_name = 'blog/post.html'
     paginate_by = 6
     context_object_name = 'posts'
+
+    def get_queryset(self):
+        queryset = Post.objects.all()
+
+        # Get filter parameters from the request
+        console_filter = self.request.GET.get('console', None)
+        sort_order = self.request.GET.get('sort', None)
+
+        # Filter by console
+        if console_filter:
+            queryset = queryset.filter(author__useroption__option=console_filter)
+
+        # Sort by date
+        if sort_order == 'oldest':
+            queryset = queryset.order_by('created_on')
+        elif sort_order == 'newest':
+            queryset = queryset.order_by('-created_on')
+
+        return queryset
 
 class UserPostList(LoginRequiredMixin, ListView):
     model = Post

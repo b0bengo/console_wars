@@ -18,11 +18,32 @@
         </div>
     </div>
 
+    <div class="row mb-4">
+        <div class="col-12">
+            <form method="get" class="d-flex align-items-center">
+                <select name="console" class="form-select me-2">
+                    <option value="">All Consoles</option>
+                    <option value="nintendo_switch" {% if request.GET.console == 'nintendo_switch' %}selected{% endif %}>Nintendo Switch</option>
+                    <option value="xbox" {% if request.GET.console == 'xbox' %}selected{% endif %}>Xbox</option>
+                    <option value="pc" {% if request.GET.console == 'pc' %}selected{% endif %}>PC</option>
+                    <option value="playstation" {% if request.GET.console == 'playstation' %}selected{% endif %}>PlayStation</option>
+                </select>
+                <select name="sort" class="form-select me-2">
+                    <option value="">Sort By</option>
+                    <option value="newest" {% if request.GET.sort == 'newest' %}selected{% endif %}>Newest to Oldest</option>
+                    <option value="oldest" {% if request.GET.sort == 'oldest' %}selected{% endif %}>Oldest to Newest</option>
+                </select>
+                <button type="submit" class="btn btn-primary">Filter</button>
+            </form>
+        </div>
+    </div>
+
     <!-- Section 2: Posts List -->
     <div class="row">
         {% for post in posts %}
         <div class="col-12 col-md-6 col-lg-4 mb-4">
-            <div class="card h-100">
+            <!-- Dynamically assign the console color class -->
+            <div class="card h-100 {% if post.author.useroption.option == 'nintendo_switch' %}nintendo-switch{% elif post.author.useroption.option == 'xbox' %}xbox{% elif post.author.useroption.option == 'pc' %}pc{% elif post.author.useroption.option == 'playstation' %}playstation{% endif %}">
                 <div class="card-body">
                     <h5 class="card-title">
                         <a href="{% url 'post_detail' post.id %}">{{ post.title }}</a>
@@ -33,9 +54,9 @@
                         <form action="{% url 'like_post' post.id %}" method="post">
                             {% csrf_token %}
                             {% if user in post.likes.all %}
-                                <button type="submit" class="btn btn-danger">Unlike</button>
+                                <button type="submit" class="unlike-btn">Unlike</button>
                             {% else %}
-                                <button type="submit" class="btn btn-primary">Like</button>
+                                <button type="submit" class="like-btn">Like</button>
                             {% endif %}
                         </form>
                     {% endif %}

@@ -14,9 +14,19 @@ By fostering a collaborative and inclusive environment, CodeWars encourages user
 • Link to User Stories in GitHub Projects:  
   • [Add a link to the GitHub Projects kanban board.]
 
-• Wireframes:  
-  • [Attach or link to accessible wireframes used in the design process, ensuring high colour contrast and alt text for visual elements.]  
+- Wireframes: 
 
+Mobile Wireframe Home page, Post page,Your Post page, Log in and Register Page(From left to Right):
+<img src = "Documents/c_wars_mobile_wireframe" alt = "Mobile Wireframe">
+
+Tablet Wireframe:
+<img src = "Documents/c_wars_tablet_wireframe" alt = "Tablet Wireframe">
+
+Desktop Wireframe:
+<img src = "Documents/c_wars_desktop_wireframe" alt = "Desktop Wireframe">
+
+To keep simplicity of the project, wireframes were drawn simliraly with differences being in filling space as the device size increases. For example, the home pages most liked section changes from a 4x1 area into a 2x2 and the post list changes from 6x1 to to 3x2 to 2x3 or the log in and register pages being the same.
+  
 Basic website needs such as a navbar was imperative in design to allow users to easily navigate throughout the website, whether it be to log in or register, with little difficulty regardless of the device size. Moreover, the design was kept simple considering smaller devices first and upscaling, the use of pagination helped dramaticaly because it ensured that users would not be stuck scrolling consistently.
 
 Each page had its purpose, with the 'Home' screen focusing on on giving users information without having to commit to logging in, casual browsing. A pie chart was selected because it was easier to compare with larger shapes denoting more registered users choosing that specific console. Below the pie chart is the four most liked posts from each console, for the target audience to see what people enjoy talking about the most.
@@ -25,7 +35,7 @@ To get a broader view of what others say the user can go to the 'Posts' page whe
 
 Finally, users who do have an account can login and edit or simply view their own posts in the 'Your Posts' page. Also, they have the ability to comment or like other posts.
 
-• Design Rationale:  
+- Design Rationale:  
 
  - **Layout**:  
     The layout was designed with simplicity and usability in mind. A clean and intuitive structure ensures users can easily navigate the website. The use of Bootstrap's grid system provides a responsive design that adapts seamlessly to different screen sizes, ensuring accessibility on desktops, tablets, and mobile devices.
@@ -111,6 +121,25 @@ In order to provide good platform for users to build a community the following q
   </tr>
 </table>
 
+## Entity Relationship Diagram (ERD)
+
+<img src = "Documents/c_wars_erd.png" alt = "Entity Relationship Diagram">
+
+- User and UserOption:
+  - One-to-One: Each user has one console preference stored in the UserOption model.
+
+- User and Post:
+  - One-to-Many: A user can create multiple posts, but each post belongs to one user.
+
+- Post and Comment:
+  - One-to-Many: A post can have multiple comments, but each comment belongs to one post.
+
+- User and Comment:
+  - One-to-Many: A user can create multiple comments, but each comment belongs to one user.
+
+- User and Post (Likes):
+  - Many-to-Many: A user can like multiple posts, and a post can be liked by multiple users.
+
 
 ## Deployment
 
@@ -131,19 +160,40 @@ Finally, once version control using git was implemented, the project can be depl
 
 Despite AI tools rapidly aiding the ease of reptitive tasks, there are times where prompts may result in a change of code or code that need further explanation therefore requiring more care reading before applying changes. Nevertheless, there were still times where AI provided helpful suggestions on how to approach certain ideas as well gaps in knowledge in other areas. This was achieved through, for example,  ghost text, where by commenting the purpose of the next line of code AI can generate the nexts bits of code to achieve the comment.
 
-## Testing Summary
+## Test and Checking
 
-Manual Testing:
+### WC3 Checker
+
+- HTML Checker
+
+<img src = "Documents/c_wars_html_checker.png" alt = "HTML Check">
+
+- CSS Checker
+
+<img src = "Documents/c_wars_css_checker.png" alt = "CSS Check">
+
+### Lighthouse
+
+- Mobile
+
+<img src = "Documents/lighthouse_mobile.png" alt = "Mobile Performance">
+
+- Desktop
+
+<img src = "Documents/lighthouse_desktop.png" alt = "Desktop Performance">
+
+Decrease in performance was to be expected mainly due to the animation and loading of the pie chart and its constant querying to determine if any updates are to be made. 
+
+### Testing Summary
+- Manual Testing:
 It was imperative to try out the website manually by creating a series of accounts and interacting with all of them. This involved: registering to view the updating piechart, liking specific posts to observe if the "most liked post" changed, liking/unliking posts of choice and testing the CRUD functionality of posts. In addition to this, Google Developer tools were used too observe the design on different device to ensure responsiveness.
 
-• Automated Testing: 
+- Automated Testing: 
 This was to take the testing further to secure a robost framework. Using AI and Django's TestCase framework, the form and views in each app could be tested to the fullest ensuring any errors could be corrected.
   
 ## Future Enhancements
 
 There were several improvements to be made towards the project such as:
 - The ccompletion of the 'Fun Facts' page desgined for the casual browsers to view the highest selling console in each continent or random facts about the consoles themselves
-
-- More personalisation by having posts gain a background colour based on the console choice the user who made the post has.
 
 - A user select in the home page to chose what type of graph to view the percentage of each console user registered
