@@ -11,19 +11,20 @@ The project aims to:
 By fostering a collaborative and inclusive environment, CodeWars encourages users to connect over their shared passion for gaming while ensuring accessibility and usability for all.
 
 ## UX Design Process
-• Link to User Stories in GitHub Projects:  
-  • [Add a link to the GitHub Projects kanban board.]
 
-- Wireframes: 
+Here is project kanban board to keep track of all the user stories to becompleted and checked off.
+<a href = "https://github.com/users/b0bengo/projects/9/views/1">Link to User Stories in GitHub Projects:</a>
+
+### Wireframes: 
 
 Mobile Wireframe Home page, Post page,Your Post page, Log in and Register Page(From left to Right):
-<img src = "Documents/c_wars_mobile_wireframe" alt = "Mobile Wireframe">
+<img src = "Documents/c_wars_mobile_wireframe.png" alt = "Mobile Wireframe">
 
 Tablet Wireframe:
-<img src = "Documents/c_wars_tablet_wireframe" alt = "Tablet Wireframe">
+<img src = "Documents/c_wars_tablet_wireframe.png" alt = "Tablet Wireframe">
 
 Desktop Wireframe:
-<img src = "Documents/c_wars_desktop_wireframe" alt = "Desktop Wireframe">
+<img src = "Documents/c_wars_desktop_wireframe.png" alt = "Desktop Wireframe">
 
 To keep simplicity of the project, wireframes were drawn simliraly with differences being in filling space as the device size increases. For example, the home pages most liked section changes from a 4x1 area into a 2x2 and the post list changes from 6x1 to to 3x2 to 2x3 or the log in and register pages being the same.
   
@@ -35,7 +36,7 @@ To get a broader view of what others say the user can go to the 'Posts' page whe
 
 Finally, users who do have an account can login and edit or simply view their own posts in the 'Your Posts' page. Also, they have the ability to comment or like other posts.
 
-- Design Rationale:  
+### Design Rationale 
 
  - **Layout**:  
     The layout was designed with simplicity and usability in mind. A clean and intuitive structure ensures users can easily navigate the website. The use of Bootstrap's grid system provides a responsive design that adapts seamlessly to different screen sizes, ensuring accessibility on desktops, tablets, and mobile devices.
