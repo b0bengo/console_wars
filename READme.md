@@ -198,3 +198,4 @@ There were several improvements to be made towards the project such as:
 - The ccompletion of the 'Fun Facts' page desgined for the casual browsers to view the highest selling console in each continent or random facts about the consoles themselves
 
 - A user select in the home page to chose what type of graph to view the percentage of each console user registered
+

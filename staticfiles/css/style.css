@@ -7,6 +7,70 @@ html, body {
     background-color: #f8f9fa; /* Optional: Add a background color for the main content */
 }
 
+/* Override Bootstrap's card background for each console */
+
+/* Nintendo Switch */
+.card.nintendo-switch {
+    background-color: #E60012; /* Nintendo Switch Red */
+    color: white; /* White text */
+}
+
+.card.nintendo-switch a {
+    color: white; /* White text for links */
+    text-decoration: none; /* Remove underline */
+}
+
+.card.nintendo-switch a:hover {
+    text-decoration: underline; /* Underline on hover */
+}
+
+/* Xbox */
+.card.xbox {
+    background-color: #107C10; /* Xbox Green */
+    color: white; /* White text */
+}
+
+.card.xbox a {
+    color: white; /* White text for links */
+    text-decoration: none; /* Remove underline */
+}
+
+.card.xbox a:hover {
+    text-decoration: underline; /* Underline on hover */
+}
+
+/* PC */
+.card.pc {
+    background-color: #1B2838; /* PC Blue */
+    color: white; /* White text */
+}
+
+.card.pc a {
+    color: white; /* White text for links */
+    text-decoration: none; /* Remove underline */
+}
+
+.card.pc a:hover {
+    text-decoration: underline; /* Underline on hover */
+}
+
+
+/* Playstation */
+.card.playstation {
+    background-color: #003791; /* Playstation Blue */
+    color: white; /* White text */
+}
+
+.card.playstation a {
+    color: white; /* White text for links */
+    text-decoration: none; /* Remove underline */
+}
+
+.card.playstation a:hover {
+    text-decoration: underline; /* Underline on hover */
+}
+
+
 .card {
     border-radius: 10px; /* Rounded corners for the card */
 }
@@ -64,4 +128,20 @@ canvas {
     padding: 10px; /* Add padding inside the container */
     background-color: #f8f9fa; /* Optional: Light background for the comments section */
     border-radius: 5px; /* Rounded corners */
+}
+
+/* Like and Unlike Button Styles */
+.like-btn, .unlike-btn {
+    background-color: transparent; /* Transparent background */
+    color: white; /* White text */
+    border: 2px solid white; /* White border */
+    padding: 10px 20px; /* Padding for the button */
+    border-radius: 5px; /* Rounded corners */
+    font-size: 16px; /* Font size */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s ease, text-decoration 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.like-btn:hover, .unlike-btn:hover {
+    text-decoration: underline; /* Underline text on hover */
 }
